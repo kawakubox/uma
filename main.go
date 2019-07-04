@@ -12,6 +12,7 @@ func main() {
 	subcommands.Register(subcommands.HelpCommand(), "")
 	subcommands.Register(subcommands.FlagsCommand(), "")
 	subcommands.Register(subcommands.CommandsCommand(), "")
+	subcommands.Register(&CalendarCmd{}, "")
 
 	flag.Parse()
 	ctx := context.Background()
