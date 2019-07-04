@@ -1,9 +1,19 @@
 package main
 
 import (
-  "fmt"
+	"context"
+	"flag"
+	"os"
+
+	"github.com/google/subcommands"
 )
 
 func main() {
-  fmt.Println("'uma' is a command line interface for horse race in Japan")
+	subcommands.Register(subcommands.HelpCommand(), "")
+	subcommands.Register(subcommands.FlagsCommand(), "")
+	subcommands.Register(subcommands.CommandsCommand(), "")
+
+	flag.Parse()
+	ctx := context.Background()
+	os.Exit(int(subcommands.Execute(ctx)))
 }
